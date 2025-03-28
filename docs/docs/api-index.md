@@ -4,8 +4,7 @@
 
 Building user interfaces with pure function calls.
 
-- [_ex_.**HTML**](/docs/echox-dom#HTML) - create a HTML DOM with the specified attributes and child nodes.
-- [_ex_.**set**](/docs/echox-dom#set) - set a HTML DOM with the specified attributes and child nodes.
+- [_ex_.**html**](/docs/echox-dom#html) - create a html DOM with the specified attributes and child nodes.
 
 ## Applying Reactivity
 

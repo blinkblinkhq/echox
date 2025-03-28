@@ -19,7 +19,6 @@ export default defineConfig({
           text: "Introduction",
           items: [
             {text: "What is EchoX", link: "/docs/what-is-echox"},
-            {text: "Why is EchoX", link: "/docs/why-is-echox"},
             {text: "Getting Started", link: "/docs/getting-started"},
             {text: "API Index", link: "/docs/api-index"},
           ],
@@ -37,7 +36,7 @@ export default defineConfig({
     socialLinks: [{icon: "github", link: "https://github.com/blinkblinkhq/echox"}],
     footer: {
       message: "Released under the MIT License.",
-      copyright: `Copyright © 2025-${new Date().getUTCFullYear()} Bairui SU`,
+      copyright: `Copyright © 2024-${new Date().getUTCFullYear()} Bairui SU`,
     },
     logo: "/logo.png",
     search: {
