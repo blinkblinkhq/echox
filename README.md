@@ -29,7 +29,6 @@ document.body.appendChild(counter);
 
 - Documentation - https://echox.dev/
 - Features - https://echox.dev/docs/what-is-echox
-- Motivation - https://echox.dev/docs/why-is-echox
 
 ## License 📄
 
