@@ -6,29 +6,45 @@ There are several way to using EchoX.
 
 EchoX is typically installed via a package manager such as Yarn or NPM.
 
-```bash
-yarn add echox
+::: code-group
+
+```sh [npm]
+$ npm add -S echox
 ```
 
-```bash
-npm install echox
+```sh [pnpm]
+$ pnpm add -S echox
 ```
+
+```sh [yarn]
+$ yarn add -S echox
+```
+
+```sh [bun]
+$ bun add -S echox
+```
+
+:::
 
 EchoX can then imported as a namespace:
 
 ```js
-import * as ex from "echox";
+import {html} from "echox";
+
+const dom = html.div(["hello world"]);
+
+document.body.append(dom);
 ```
 
 ## Imported as an ES module
 
-In vanilla HTML, EchoX can be imported as an ES module, say from jsDelivr:
+In vanilla html, EchoX can be imported as an ES module, say from jsDelivr:
 
-```HTML
+```html
 <script type="module">
-  import * as ex from "https://cdn.jsdelivr.net/npm/echox/+esm";
+  import {html} from "https://cdn.jsdelivr.net/npm/echox/+esm";
 
-  const dom = ex.HTML.div(["hello world"]);
+  const dom = html.div(["hello world"]);
 
   document.body.append(dom);
 </script>
@@ -38,10 +54,10 @@ In vanilla HTML, EchoX can be imported as an ES module, say from jsDelivr:
 
 EchoX is also available as a UMD bundle for legacy browsers.
 
-```HTML
+```html
 <script src="https://cdn.jsdelivr.net/npm/echox"></script>
 <script>
-  const dom = ex.HTML.div(["hello world"]);
+  const dom = ex.html.div(["hello world"]);
 
   document.body.append(dom);
 </script>

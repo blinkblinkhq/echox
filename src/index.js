@@ -140,8 +140,7 @@ const create = (ns, name, a, b) => {
 
 const handler = (ns) => ({get: (_, name) => create.bind(undefined, ns, name)});
 
-// TODO: test
-export function set(dom, a, b) {
+function set(dom, a, b) {
   const [props, children] = isObjectLiteral(a) ? [a, b ?? []] : [{}, a ?? []];
   const name = dom.tagName.toLowerCase();
 
@@ -203,4 +202,4 @@ export function set(dom, a, b) {
 
 export const reactive = () => new Reactive();
 
-export const HTML = new Proxy((ns) => new Proxy(create, handler(ns)), handler());
+export const html = new Proxy((ns) => new Proxy(create, handler(ns)), handler());

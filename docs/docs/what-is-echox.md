@@ -1,36 +1,48 @@
 # What is EchoX?
 
-**EchoX** is The lightweight reactive UI framework for declarative DOM manipulation, alternative to React, Vue and jQuery for small projects especially.
+**EchoX** is a lightweight reactive UI framework for declarative DOM manipulation, offering a simple and efficient alternative to [React](https://react.dev/), [Vue](https://vuejs.org/), and [jQuery](https://jquery.com/), especially for small projects. 
 
-The philosophy for EchoX is **UI = f(DOM, Reactive)**, please keep reading to find out why! Also, EchoX focus on simplicity, so there are only few [APIs](/docs/api-index) for now!
+It works out of the box without the need for compilation or transpilation while still providing the following benefits:
 
-## Building UI
+- Fine-grained interactivity
+- Readable template
+- Fully TypeScript support
 
-EchoX provides a declarative way to building user interfaces with pure function calls. A _HTML_ proxy object exported to **create native DOM directly**. For example, to create a hello world message:
+The philosophy for EchoX is **UI = f(DOM, Reactive)**, and [APIs](/docs/api-index) are designed based on this.
 
-```js
-// The dom variable is a native DOM, not a virtual dom!!!
-const dom = HTML.span({style: "font-size: 10"}, ["hello World"]);
+## Functional UI Construction
 
-// So you can directly append dom to the DOM tree!
-container.appendChild(dom);
-```
+EchoX provides a declarative way to building user interfaces with pure function calls, without compilation like JSX (used in React), and with full TypeScript support over string-based templates, portable and readable (used in Vue and Alpine).
 
-This is the _DOM_ in the philosophy. Also, You can also can create nested structures using _HTML_. For example, let's create a counter:
+A _html_ proxy object exported to build nested UI.For example, let's create a counter:
 
 ```js
-const dom = HTML.div([
-  HTML.button({style: "background: red"}, ["👍"]),
-  HTML.button({style: "background: red"}, ["👎"]),
-  HTML.span([0]),
+html.div([
+  html.button({style: "background: blue"}, ["👍"]),
+  html.button({style: "background: red"}, ["👎"]),
+  html.span([0]),
 ]);
 ```
 
 Please refer to [EchoX DOM](/docs/echox-dom) from more information.
 
-**If you only want a static DOM, this is all you need to know how about EchoX**! Otherwise, keep reading!
+## Native DOM Manipulation
 
-## Applying Reactivity
+Operates directly on the native DOM instead of relying on a virtual DOM, achieving higher performance and lower memory overhead while maintaining simplicity.
+
+The _html_ proxy object **create native DOM directly**. This is the _DOM_ in the philosophy. For example, to create a hello world message:
+
+```js
+// The dom variable is a native DOM, not a virtual dom!!!
+const dom = html.span({style: "font-size: 10"}, ["hello World"]);
+
+// So you can directly append dom to the DOM tree!
+container.appendChild(dom);
+```
+
+## Granular State Observation
+
+Apply fine-grained state observation, allowing independently update, minimizing unnecessary DOM updates and improves performance compared to virtual DOM-based frameworks. (Similar to [SolidJS](https://www.solidjs.com/))
 
 EchoX exports one method _reactive_ for reactivity. For example, let's make the counter interactive:
 
@@ -42,10 +54,10 @@ const [scope] = ex
   .effect((d) => console.log(d.value, d.double))
   .join();
 
-const dom = HTML.div([
-  HTML.button({onclick: () => scope.value++}, ["👍"]),
-  HTML.button({onclick: () => scope.value--}, ["👎"]),
-  HTML.span([() => state.double]),
+const dom = html.div([
+  html.button({onclick: () => scope.value++}, ["👍"]),
+  html.button({onclick: () => scope.value--}, ["👎"]),
+  html.span([() => state.double]),
 ]);
 ```
 
